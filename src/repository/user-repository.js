@@ -41,6 +41,19 @@ class UserRepository{
     }
 
 
+    async getByEmail(userEmail){
+        try {
+          const user = await User.findOne({
+            where:{
+                email:userEmail
+            }
+          })   
+          return user;
+        } catch (error) {
+            console.log("User does not exist");
+            throw{error : "User does not exist"} ;  
+        }
+    }
     async update(userId,data){
         try {
             
