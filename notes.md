@@ -33,7 +33,7 @@ routes :
 check
 
 
-#enrypt password ->bycrypt
+# enrypt password ->bycrypt
 
 sequelize hooks => model => beforeCreate
 
