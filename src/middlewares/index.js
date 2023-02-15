@@ -1,4 +1,5 @@
 module.exports={
-    AuthRequestValidator : require("./auth-request-validators")
+    AuthRequestValidator : require("./auth-request-validators"),
+    
 }
-console.log("export ",this.AuthRequestValidator)
+//console.log("export ",this.AuthRequestValidator)
