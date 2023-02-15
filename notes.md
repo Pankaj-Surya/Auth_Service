@@ -85,3 +85,33 @@ Ex. isEmail:true
 | :---- | :----: |
 | 1 | Admin
 | 2 | User 
+
+</br>
+
+### ⭐⭐ Automatically create User-Roles Table using through Attribute
+
+</br>
+
+Role Model
+``` javascript  static associate(models) {
+      this.belongsToMany(models.User,{
+        through:'User-Roles'
+      });
+```
+User Model
+``` javascript  static associate(models) {
+      this.belongsToMany(models.Role,{
+        through:'User-Roles'
+      });
+```
+</br>
+Note : Migrate & Sync the Database 
+
+**Add Roles Using Seed **
+
+`npx sequelize seed:generate --name ad
+d-roles`
+
+**Seed Execute**
+
+`npx sequelize db:seed --seed 20230215104641-add-roles.js`

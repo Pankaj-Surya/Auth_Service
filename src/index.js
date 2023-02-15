@@ -6,6 +6,7 @@ const apiRoutes = require('./routes/index');
 const UserRepository = require('./repository/user-repository')
 const UserService = require('./services/user-service');
 const { response } = require('express');
+const {User,Role} = require('./models/index');
 
 const setupAndStartServer = async() =>{
  const app = express();
@@ -17,19 +18,19 @@ const setupAndStartServer = async() =>{
 
  app.listen(PORT,async ()=>{
     console.log(`Server start at ${PORT}`);
-   //  const repo  = new UserRepository();
-   //  const result=await repo.get(1);
-   //  console.log("result : ",result)
-   //     // const incomingpassword = '123456';
-   //      // const user = await User.findByPk(3);
-   //      // const response = bcrypt.compareSync(incomingpassword, user.password);
-   //    const service = new UserService();
-   //    const newToken =await service.createToken({email:"sam@gmail.com",id:1})
-   //    console.log("newToken : ",newToken)
-   //    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhbmtldEBhZG1pbi5jb20iLCJpZCI6MSwiaWF0IjoxNjcxNjM1MTgxLCJleHAiOjE2NzE2MzUyMTF9.vuo6QmYm6TmL2P2rBXoNDbPi1st5ZVrK4Yf2Jz-Dpzs';
-   //    //const reponse = await service.verifyToken(newToken);
-   //    const reponse = await service.verifyToken(token);
-   //    console.log("verify : ",reponse)
+   //  if(process.env.DB_SYNC) {
+   //    db.sequelize.sync({alter: true});
+   //  }
+
+   const u1 =await User.findByPk(2);
+   const r1 = await Role.findByPk(3);
+   //u1.addRole(r1);
+   // all user with roleId =2
+   //const response = await r1.getUsers();
+   // const response = await u1.getRoles();
+   const response = await u1.hasRoles(r1);
+   console.log(response)
+      // all user with roleId =2
 
    })
 
